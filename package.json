@@ -1,0 +1,26 @@
+{
+  "name": "downing",
+  "version": "1.0.0",
+  "description": "Technical Test Answers and Code",
+  "homepage": "https://github.com/JonathanMHEdens/Downing#readme",
+  "bugs": {
+    "url": "https://github.com/JonathanMHEdens/Downing/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonathanMHEdens/Downing.git"
+  },
+  "license": "ISC",
+  "author": "Jonathan Edens",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {},
+  "devDependencies": {
+    "@faker-js/faker": "^9.8.0",
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.18"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0"
+  }
+}
