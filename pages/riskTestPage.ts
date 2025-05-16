@@ -1,4 +1,4 @@
-import {Locator, Page} from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 import { RestrictedAccessPage } from "./restrictedAccessPage";
 
 export class RiskTestPage {
@@ -16,8 +16,8 @@ export class RiskTestPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.riskTestTitle = page.getByText("Risk Test");
-        this.investmentRiskQuestionOne = page.getByText("An investment that is a kind of loan to a company or government");
+        this.riskTestTitle = page.getByText("Risk test");
+        this.investmentRiskQuestionOne = page.getByText("An investment that is a kind");
         this.investmentRiskQuestionTwo = page.getByText("Yes, this is an investment,");
         this.investmentRiskQuestionThree = page.getByText("No, there is no guarantee");
         this.investmentRiskQuestionFour = page.getByText("No, whilst the bond is");
@@ -30,6 +30,8 @@ export class RiskTestPage {
     async checkRiskTestTitle() {
         await this.riskTestTitle.waitFor({ state: "visible" });
     }
+
+    // Complete the risk test by selecting the options and clicking the submit button
     async completeRiskTest(): Promise<RestrictedAccessPage> {
         const restrictedAccessPage = new RestrictedAccessPage(this.page);
         await this.investmentRiskQuestionOne.click();

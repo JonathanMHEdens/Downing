@@ -37,11 +37,12 @@ export class SignUpPage {
     this.phoneCommunicationCheckbox = page.getByRole("checkbox", { name: "Yes, by phone" });
     this.signUpButton = page.getByRole("button", { name: "Sign up" });
   }
- 
+
   async acceptCookies() {
     await this.acceptCookiesButton.click();
   }
 
+  // Complete the sign-up form with the generated details
   async fillSignUpForm(
     title: string,
     firstName: string,
@@ -63,19 +64,21 @@ export class SignUpPage {
     await this.phoneNumberInput.fill(phoneNumber);
     await this.howYouHeardList.selectOption(howYouHeard);
   }
-    async acceptTermsAndConditions() {
-        await this.termsAndConditionsCheckbox.click();
-    }
-    async acceptEmailCommunication() {
-        await this.emailCommunicationCheckbox.check();
-    }
-    async acceptPhoneCommunication() {
-        await this.phoneCommunicationCheckbox.check();
-    }
-    async clickSignUpButton(): Promise<InvestorCategoryPage> {
-        const investorCategoryPage = new InvestorCategoryPage(this.page);
-        await this.signUpButton.click();
-        await this.page.waitForURL("/account/personal-details/investor-type");
-        return investorCategoryPage;
-    }
+  async acceptTermsAndConditions() {
+    await this.termsAndConditionsCheckbox.click();
+  }
+  async acceptEmailCommunication() {
+    await this.emailCommunicationCheckbox.check();
+  }
+  async acceptPhoneCommunication() {
+    await this.phoneCommunicationCheckbox.check();
+  }
+  /** Click the sign-up button and wait for the next page to load
+  Return a new instance of the InvestorCategoryPage class */
+  async clickSignUpButton(): Promise<InvestorCategoryPage> {
+    const investorCategoryPage = new InvestorCategoryPage(this.page);
+    await this.signUpButton.click();
+    await this.page.waitForURL("/account/personal-details/investor-type");
+    return investorCategoryPage;
+  }
 }
