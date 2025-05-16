@@ -5,7 +5,6 @@ Technical test answers are supplied in the Word document.
 
 To install the project, clone the Git repository and run npm install from the terminal.
 To run the test run npx playwright test --ui then click play adjacent to the test case.
-Alternatively, you can run it in headless mode by running npx playwright test.
 
 To successfully generate and view the allure report, you will need to have the Java JDK installed and a Windows environment variable of JAVA_HOME set the file pathway.
 The Java JDK can be easily installed using the official Java Platform extension for VS Code.
