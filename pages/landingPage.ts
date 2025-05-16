@@ -1,4 +1,4 @@
-import { Locator, Page } from '@playwright/test';
+import { expect, Locator, Page } from '@playwright/test';
 import { SignUpPage } from './signUpPage';
 
 export class LandingPage {
@@ -14,9 +14,12 @@ export class LandingPage {
     this.signUpButton = page.getByRole('link', { name: 'Sign up' });
   }
 
-    async clickSignUpButton(): Promise<SignUpPage> {
-        const signUpPage = new SignUpPage(this.page);
-        await this.signUpButton.click();
-        return signUpPage;
-    }
+// Await the sign up button to be visible and then click it
+  // Return a new instance of the SignUpPage class
+  async clickSignUpButton(): Promise<SignUpPage> {
+    const signUpPage = new SignUpPage(this.page);
+    await this.signUpButton.waitFor({ state: 'visible' });
+    await this.signUpButton.click();
+    return signUpPage;
+  }
 }

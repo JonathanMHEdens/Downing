@@ -1,5 +1,5 @@
 import { Locator, Page } from "@playwright/test";
-import { RiskTest } from "./riskTestPage";
+import { RiskTestPage } from "./riskTestPage";
 
 export class InvestorCategoryPage {
   readonly page: Page;
@@ -28,7 +28,7 @@ export class InvestorCategoryPage {
   constructor(page: Page) {
     this.page = page;
     this.highNetWorthButton = page.getByText("High Net Worth");
-    this.sophisticatedInvestorButton = page.getByText("Sophisticated Investor", {exact: true});
+    this.sophisticatedInvestorButton = page.getByText("Sophisticated Investor", { exact: true });
     this.selfCertifiedSophisticatedButton = page.getByText("Self Certified Sophisticated");
     this.restrictedInvestorButton = page.getByText("Restricted Investor");
     this.highNetWorthInvestorHeading = page.getByText("High Net Worth Investor");
@@ -63,7 +63,7 @@ export class InvestorCategoryPage {
     await this.highNetWorthIncomeAmountInput.fill(amount);
   }
 
-  async selctHasSufficientAssets() {
+  async selectHasSufficientAssets() {
     await this.highNetWorthAssetsYesRadio.check();
     await this.highNetWorthAssetsAmountInput.waitFor({ state: "visible" });
   }
@@ -72,29 +72,34 @@ export class InvestorCategoryPage {
     await this.highNetWorthAssetsAmountInput.fill(amount);
   }
 
-    async inputInvestorName(name: string) {
-        await this.declarationsInvestorNameInput.fill(name);
-    }
-    async openCalendarAndClickToday() {
-        await this.declarationsCalendarOpenButton.click();
-        await this.calendarTodayButton.waitFor({ state: "visible" });
-        await this.calendarTodayButton.click();
-    }
+  async inputInvestorName(name: string) {
+    await this.declarationsInvestorNameInput.fill(name);
+  }
 
-    async selectSourceOfFunds(source: string) {
-        await this.sourceOfFundsDropdown.selectOption(source);
-    }
+  // Open the calendar and click on the "Today" button
+  // This method waits for the calendar to be visible before clicking
+  async openCalendarAndClickToday() {
+    await this.declarationsCalendarOpenButton.click();
+    await this.calendarTodayButton.waitFor({ state: "visible" });
+    await this.calendarTodayButton.click();
+  }
 
-    async checkAllFourCheckboxes() {
-        await this.understandRiskLevelCheckbox.check();
-        await this.understandCapitalCheckbox.check();
-        await this.sufficientAssetsCheckbox.check();
-        await this.confirmFundsCheckbox.check();
-    }
-    
-    async clickSaveButton(): Promise<RiskTest> {
-        const riskTest = new RiskTest(this.page);
-        await this.saveButton.click();
-        return riskTest;
-    }
+  async selectSourceOfFunds(source: string) {
+    await this.sourceOfFundsDropdown.selectOption(source);
+  }
+
+  // Check all four checkboxes
+  async checkAllFourCheckboxes() {
+    await this.understandRiskLevelCheckbox.check();
+    await this.understandCapitalCheckbox.check();
+    await this.sufficientAssetsCheckbox.check();
+    await this.confirmFundsCheckbox.check();
+  }
+
+  // Click the save button and return a new instance of the RiskTestPage class
+  async clickSaveButton(): Promise<RiskTestPage> {
+    const riskTest = new RiskTestPage(this.page);
+    await this.saveButton.click();
+    return riskTest;
+  }
 }
