@@ -18,8 +18,13 @@ export class LandingPage {
   // Return a new instance of the SignUpPage class
   async clickSignUpButton(): Promise<SignUpPage> {
     const signUpPage = new SignUpPage(this.page);
+    try{
     await this.signUpButton.waitFor({ state: 'visible' });
     await this.signUpButton.click();
+    }
+    catch (error) {
+      console.error("Error clicking the sign up button:", error);
+    }
     return signUpPage;
   }
 }

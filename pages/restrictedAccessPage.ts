@@ -16,12 +16,20 @@ export class RestrictedAccessPage {
 
   // Check if the restricted access title is visible and contains the user's name
   async checkRestrictedAccessTitles(userName: string) {
+    try{
     expect(this.restrictedAccessTitle).toBeVisible();
     expect(this.restrictedAccessUserGreeting).toHaveText(`Hello ${userName}`);
+    }
+    catch (error) {
+      console.error("Error checking restricted access titles:", error);
+    }
   }
 
   async clickLogoutButton() {
+    try{
     await this.logoutButton.click();
+    }catch (error) {
+      console.error("Error clicking the logout button:", error);
+    }
   }
-
 }

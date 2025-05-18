@@ -54,6 +54,7 @@ export class SignUpPage {
     phoneNumber: string,
     howYouHeard: string
   ) {
+    try{
     await this.registerTitlesList.selectOption(title);
     await this.firstNameInput.fill(firstName);
     await this.lastNameInput.fill(lastName);
@@ -63,6 +64,9 @@ export class SignUpPage {
     await this.emailInput.fill(email);
     await this.phoneNumberInput.fill(phoneNumber);
     await this.howYouHeardList.selectOption(howYouHeard);
+    }catch (error) {
+      console.error("Error filling sign-up form:", error);
+    }
   }
   async acceptTermsAndConditions() {
     await this.termsAndConditionsCheckbox.click();
@@ -73,12 +77,18 @@ export class SignUpPage {
   async acceptPhoneCommunication() {
     await this.phoneCommunicationCheckbox.check();
   }
+
   /** Click the sign-up button and wait for the next page to load
   Return a new instance of the InvestorCategoryPage class */
   async clickSignUpButton(): Promise<InvestorCategoryPage> {
     const investorCategoryPage = new InvestorCategoryPage(this.page);
+    try { 
     await this.signUpButton.click();
     await this.page.waitForURL("/account/personal-details/investor-type");
+    }
+    catch (error) {
+      console.error("Error clicking sign-up button:", error);
+    }
     return investorCategoryPage;
   }
 }

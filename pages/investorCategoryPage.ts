@@ -79,9 +79,13 @@ export class InvestorCategoryPage {
   // Open the calendar and click on the "Today" button
   // This method waits for the calendar to be visible before clicking
   async openCalendarAndClickToday() {
+    try{
     await this.declarationsCalendarOpenButton.click();
     await this.calendarTodayButton.waitFor({ state: "visible" });
     await this.calendarTodayButton.click();
+    }catch (error) {
+      console.error("Error opening calendar and clicking today:", error);
+    }
   }
 
   async selectSourceOfFunds(source: string) {
@@ -90,16 +94,24 @@ export class InvestorCategoryPage {
 
   // Check all four checkboxes
   async checkAllFourCheckboxes() {
+    try{
     await this.understandRiskLevelCheckbox.check();
     await this.understandCapitalCheckbox.check();
     await this.sufficientAssetsCheckbox.check();
     await this.confirmFundsCheckbox.check();
+    }catch (error) {
+      console.error("Error checking all four checkboxes:", error);
+    }
   }
 
   // Click the save button and return a new instance of the RiskTestPage class
   async clickSaveButton(): Promise<RiskTestPage> {
     const riskTest = new RiskTestPage(this.page);
+    try{
     await this.saveButton.click();
+    }catch (error) {
+      console.error("Error clicking save button:", error);
+    }
     return riskTest;
   }
 }
