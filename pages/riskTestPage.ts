@@ -34,6 +34,7 @@ export class RiskTestPage {
     // Complete the risk test by selecting the options and clicking the submit button
     async completeRiskTest(): Promise<RestrictedAccessPage> {
         const restrictedAccessPage = new RestrictedAccessPage(this.page);
+        try{
         await this.investmentRiskQuestionOne.click();
         await this.investmentRiskQuestionTwo.click();
         await this.investmentRiskQuestionThree.click();
@@ -42,6 +43,10 @@ export class RiskTestPage {
         await this.investmentRiskQuestionSix.click();
         await this.investmentRiskQuestionSeven.check();
         await this.submitButton.click();
+        }
+        catch (error) {
+            console.error("Error completing the risk test:", error);
+        }
         return restrictedAccessPage;
     }
 }

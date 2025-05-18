@@ -26,6 +26,8 @@ export default defineConfig({
             ['allure-playwright']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    /* Take screenshots on failure */
+    screenshot: 'only-on-failure',
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'https://bonds-client-test.downinglabs.co.uk',
 
