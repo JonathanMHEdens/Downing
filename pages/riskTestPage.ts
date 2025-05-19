@@ -45,7 +45,7 @@ export class RiskTestPage {
         await this.submitButton.click();
         }
         catch (error) {
-            console.error("Error completing the risk test:", error);
+            console.error("Error completing the risk test on Risk Test Page:", error);
         }
         return restrictedAccessPage;
     }

@@ -65,7 +65,7 @@ export class SignUpPage {
     await this.phoneNumberInput.fill(phoneNumber);
     await this.howYouHeardList.selectOption(howYouHeard);
     }catch (error) {
-      console.error("Error filling sign-up form:", error);
+      console.error("Error filling sign-up form on Sign Up page:", error);
     }
   }
   async acceptTermsAndConditions() {
@@ -87,7 +87,7 @@ export class SignUpPage {
     await this.page.waitForURL("/account/personal-details/investor-type");
     }
     catch (error) {
-      console.error("Error clicking sign-up button:", error);
+      console.error("Error clicking sign-up button on Sign Up page:", error);
     }
     return investorCategoryPage;
   }
