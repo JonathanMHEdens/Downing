@@ -84,7 +84,7 @@ export class InvestorCategoryPage {
     await this.calendarTodayButton.waitFor({ state: "visible" });
     await this.calendarTodayButton.click();
     }catch (error) {
-      console.error("Error opening calendar and clicking today:", error);
+      console.error("Error opening calendar and clicking today on Risk Test Page:", error);
     }
   }
 
@@ -100,7 +100,7 @@ export class InvestorCategoryPage {
     await this.sufficientAssetsCheckbox.check();
     await this.confirmFundsCheckbox.check();
     }catch (error) {
-      console.error("Error checking all four checkboxes:", error);
+      console.error("Error checking all four checkboxes on Risk Test Page:", error);
     }
   }
 
@@ -110,7 +110,7 @@ export class InvestorCategoryPage {
     try{
     await this.saveButton.click();
     }catch (error) {
-      console.error("Error clicking save button:", error);
+      console.error("Error clicking save button on Risk Test Page:", error);
     }
     return riskTest;
   }

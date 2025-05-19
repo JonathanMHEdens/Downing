@@ -23,7 +23,7 @@ export class LandingPage {
     await this.signUpButton.click();
     }
     catch (error) {
-      console.error("Error clicking the sign up button:", error);
+      console.error("Error clicking the sign up button on Landing Page:", error);
     }
     return signUpPage;
   }

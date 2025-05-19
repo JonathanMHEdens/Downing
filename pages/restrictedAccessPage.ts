@@ -21,7 +21,7 @@ export class RestrictedAccessPage {
     expect(this.restrictedAccessUserGreeting).toHaveText(`Hello ${userName}`);
     }
     catch (error) {
-      console.error("Error checking restricted access titles:", error);
+      console.error("Error checking restricted access titles on Restricted Access page:", error);
     }
   }
 
